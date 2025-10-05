@@ -1,0 +1,343 @@
+/* --- Global Styles & Variables --- */
+:root {
+  --primary-color: #0a2342; /* Azul escuro, clássico */
+  --secondary-color: #d4af37; /* Dourado/Mostarda, toque de elegância */
+  --background-color: #f4f4f9; /* Fundo cinza claro, suave */
+  --text-color: #333;
+  --light-text-color: #fff;
+  --border-color: #ddd;
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --font-main: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-headings: 'Georgia', 'Times New Roman', serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-headings);
+  color: var(--primary-color);
+  margin-top: 0;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+.button, button {
+  background-color: var(--primary-color);
+  color: var(--light-text-color);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s, transform 0.2s;
+  display: inline-block;
+  text-align: center;
+}
+
+.button:hover, button:hover {
+  background-color: #004d7a;
+  transform: translateY(-2px);
+}
+
+.button-secondary {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.button-secondary:hover {
+    background-color: #b89a30;
+}
+
+
+/* --- Header --- */
+.header {
+  background-color: var(--primary-color);
+  color: var(--light-text-color);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo a {
+  color: var(--light-text-color);
+  font-family: var(--font-headings);
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.header-logo a:hover {
+    color: var(--secondary-color);
+}
+
+.header-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2rem;
+}
+
+.header-nav a {
+  color: var(--light-text-color);
+  font-weight: bold;
+  font-size: 1rem;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.header-nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--secondary-color);
+  transition: width 0.3s;
+}
+
+.header-nav a:hover::after {
+  width: 100%;
+}
+
+/* --- Footer --- */
+.footer {
+  background-color: var(--primary-color);
+  color: #a7c0e0;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: auto;
+}
+
+/* --- Home Page & Course Card --- */
+.home-welcome {
+  text-align: center;
+  margin-bottom: 3rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.course-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.course-card-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-card-content h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.course-card-details {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  color: #555;
+  flex-grow: 1;
+}
+
+.course-card-details li {
+  margin-bottom: 0.5rem;
+}
+
+.course-card-footer {
+  padding: 0 1.5rem 1.5rem;
+}
+
+/* --- Course Detail & Curriculum Page --- */
+.page-container {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.page-container h1 {
+  border-bottom: 3px solid var(--secondary-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-item {
+  background-color: var(--background-color);
+  padding: 1rem;
+  border-radius: 5px;
+  border-left: 5px solid var(--primary-color);
+}
+
+.detail-item strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--primary-color);
+}
+
+.syllabus-list {
+    list-style-type: '✓ ';
+    padding-left: 1.5rem;
+}
+
+.syllabus-list li {
+    margin-bottom: 0.5rem;
+}
+
+/* --- Enrollment Form --- */
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.radio-group label, .checkbox-group label {
+    margin-right: 1rem;
+    font-weight: normal;
+}
+
+/* --- Admin --- */
+.admin-login-container, .admin-dashboard {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+}
+
+.admin-dashboard h1, .admin-login-container h1 {
+    text-align: center;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background-color: var(--background-color);
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.stat-card h3 {
+    margin: 0 0 0.5rem 0;
+}
+
+.stat-card p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.application-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.application-list th, .application-list td {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.application-list th {
+    background-color: var(--primary-color);
+    color: white;
+}

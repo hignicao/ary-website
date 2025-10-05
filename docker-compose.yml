@@ -1,0 +1,54 @@
+services:
+  db:
+    image: postgres:13
+    container_name: professor_ary_db
+    restart: always
+    environment:
+      POSTGRES_USER: professorary
+      POSTGRES_PASSWORD: secretpassword
+      POSTGRES_DB: sitecursos
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/src/models/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: professor_ary_backend
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend/src:/usr/src/app/src
+    env_file:
+      - ./backend/src/.env
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: professor_ary_frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local

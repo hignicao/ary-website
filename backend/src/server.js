@@ -26,11 +26,11 @@ const startServer = async () => {
     res.send('API do Professor Ary está no ar!');
   });
 
-  // Iniciar o servidor
-  app.listen(PORT, () => {
+  // Iniciar o servidor com a correção de endereço
+  app.listen(PORT, '0.0.0.0', () => {
     console.log(`Backend server is running on http://localhost:${PORT}`);
     // Atraso para garantir que o DB esteja pronto antes de tentar inserir o admin
-    setTimeout(initializeAdmin, 5000); // Reduzi o tempo de espera
+    setTimeout(initializeAdmin, 5000);
   });
 };
 

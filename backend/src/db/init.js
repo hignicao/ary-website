@@ -4,24 +4,20 @@ const db = require('./db');
 
 const initDb = async () => {
   try {
-    // 1. Verifica se a tabela 'courses' já existe.
-    const res = await db.query("SELECT to_regclass('public.courses')");
+    // Vamos sempre rodar o script.
+    // O script SQL é "idempotente", o que significa que ele pode
+    // ser executado várias vezes sem causar problemas.
+    // - CREATE TABLE IF NOT EXISTS: não vai recriar tabelas.
+    // - TRUNCATE TABLE: vai limpar os cursos antigos.
+    // - INSERT INTO: vai inserir os cursos com o texto atualizado.
 
-    // Se a tabela já existe, não faz nada.
-    if (res.rows[0].to_regclass) {
-      console.log('Banco de dados já inicializado. Nenhuma ação necessária.');
-      return;
-    }
-
-    // 2. Se a tabela não existe, lê e executa o script init.sql.
-    console.log('Banco de dados não inicializado. Executando script de setup...');
+    console.log('Executando script de inicialização/atualização do banco de dados...');
     const sql = fs.readFileSync(path.join(__dirname, '../models/init.sql')).toString();
     await db.query(sql);
     console.log('Script do banco de dados executado com sucesso!');
 
   } catch (err) {
     console.error('Erro ao inicializar o banco de dados:', err);
-    // Em caso de erro, encerra o processo para evitar que a aplicação rode com um estado inconsistente.
     process.exit(1);
   }
 };

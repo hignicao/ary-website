@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { IoTimeOutline, IoCalendarOutline, IoPricetagOutline } from "react-icons/io5";
 
 const CourseCard = ({ course }) => {
   return (
@@ -7,9 +8,18 @@ const CourseCard = ({ course }) => {
       <div className="course-card-content">
         <h3>{course.title}</h3>
         <ul className="course-card-details">
-          <li><strong>Carga Horária:</strong> {course.workload} horas</li>
-          <li><strong>Horário:</strong> {course.schedule}</li>
-          <li><strong>Investimento:</strong> R$ {Number(course.price).toFixed(2).replace('.', ',')}</li>
+          <li>
+            <IoTimeOutline />
+            <strong>Carga Horária:</strong> {course.workload} horas
+          </li>
+          <li>
+            <IoCalendarOutline />
+            <strong>Horário:</strong> {course.schedule}
+          </li>
+          <li>
+            <IoPricetagOutline />
+            <strong>Investimento:</strong> R$ {Number(course.price).toFixed(2).replace('.', ',')}
+          </li>
         </ul>
       </div>
        <div className="course-card-footer">

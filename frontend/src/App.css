@@ -341,3 +341,218 @@ a:hover {
     background-color: var(--primary-color);
     color: white;
 }
+
+/* --- Estilos para Alterações --- */
+
+.button-back {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Espaço entre o ícone e o texto */
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0; /* Remove padding antigo */
+  margin-bottom: 1.5rem; /* Adiciona espaço abaixo dele */
+}
+
+.button-back:hover {
+  color: var(--secondary-color);
+}
+
+.contact-info {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.contact-info h3 {
+  margin-top: 0;
+}
+
+/* --- Estilos para Ícones --- */
+
+/* Alinha o ícone no botão "Voltar" */
+.button-back {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Espaço entre o ícone e o texto */
+}
+
+/* Alinha ícones no menu de navegação */
+.header-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Alinha ícones nos detalhes do card */
+.course-card-details li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Alinha ícones nas informações de contato */
+.contact-info p {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* --- Atualização de Estilos para Ícones --- */
+
+/* Modifica o .button para alinhar ícones (como em "Enviar") */
+.button, button[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+/* Alinha ícones em labels de formulário */
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* Classe para alinhar ícones em títulos (h2, h3) */
+.icon-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Classe para listas que usam ícones como bullets */
+.icon-list {
+  list-style: none;
+  padding-left: 0.5rem;
+}
+.icon-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.icon-list li svg {
+  flex-shrink: 0; /* Impede que o ícone seja esmagado */
+  margin-top: 0.25rem;
+  color: var(--primary-color);
+}
+
+/* --- Estilos para Banners (Hero) --- */
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 300px; /* Altura do banner */
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  color: #fff;
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que a imagem cubra o espaço */
+  filter: brightness(0.6); /* Escurece a imagem */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(10, 35, 66, 0.6), rgba(10, 35, 66, 0.2));
+}
+
+.hero-title {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+/* --- Estilos para Layout em Colunas --- */
+.two-column-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Duas colunas de tamanho igual */
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.column-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+/* Regra para telas pequenas (mobile) */
+@media (max-width: 768px) {
+  .two-column-layout {
+    grid-template-columns: 1fr; /* Coluna única em telas menores */
+  }
+  .column-image {
+    order: -1; /* Põe a imagem no topo em telas menores */
+  }
+  .hero-title {
+    font-size: 2.2rem;
+  }
+}
+
+/* --- Estilos para NOVA Navegação de Cursos --- */
+.course-navigation {
+  display: flex; /* Flex-direction: row por padrão */
+  align-items: center;
+  /* justify-content é aplicado via style inline no React */
+  margin-bottom: 1.5rem; /* Empurra o "details-grid" para baixo */
+  width: 100%;
+}
+
+.course-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.course-nav-link:hover {
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+}
+
+/* Removemos o "justify-content: flex-end" daqui */
+.course-nav-link.next {
+  flex-direction: row-reverse; /* Inverte a ordem do ícone e texto */
+}
+
+@media (max-width: 768px) {
+  .course-nav-link span {
+    display: none;
+  }
+}

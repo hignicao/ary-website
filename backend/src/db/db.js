@@ -3,13 +3,22 @@ const { Pool } = require('pg');
 const isProduction = process.env.NODE_ENV === 'production';
 
 // Configuração para produção (Render) usa a DATABASE_URL
-// Configuração para desenvolvimento (local) usa as variáveis do .env
-const connectionConfig = {
+const productionConfig = {
   connectionString: process.env.DATABASE_URL,
-  ssl: isProduction ? { rejectUnauthorized: false } : false,
+  ssl: { rejectUnauthorized: false },
 };
 
-const pool = isProduction ? new Pool(connectionConfig) : new Pool();
+// Configuração para desenvolvimento (Docker local) usa as variáveis do .env
+const developmentConfig = {
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+};
+
+// Seleciona a configuração correta
+const pool = new Pool(isProduction ? productionConfig : developmentConfig);
 
 // Teste de Conexão
 pool.query('SELECT NOW()', (err, res) => {

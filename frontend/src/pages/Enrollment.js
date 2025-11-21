@@ -74,7 +74,6 @@ const Enrollment = () => {
   };
 
   const renderQuestion = (q) => {
-    // Labels do questionário não terão ícones para não poluir
     const questionLabel = <label htmlFor={q.id} style={{fontWeight: 'bold', color: 'var(--primary-color)'}}>{q.label}</label>
 
     switch (q.type) {
@@ -105,54 +104,55 @@ const Enrollment = () => {
   if (loading) return <p>Carregando formulário...</p>;
 
   return (
-    <div className="form-container">
+    <>
       <button onClick={() => navigate(-1)} className="button-back" style={{marginBottom: '1.5rem'}}>
         <IoArrowBack /> Voltar
       </button>
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {success && <p style={{ color: 'green' }}>{success}</p>}
+      <div className="form-container">
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {success && <p style={{ color: 'green' }}>{success}</p>}
 
-      {!success && (
-        <form onSubmit={handleSubmit}>
-          <h1>Formulário de Inscrição</h1>
-          <h3>Curso: {course?.title}</h3>
+        {!success && (
+          <form onSubmit={handleSubmit}>
+            <h1>Formulário de Inscrição</h1>
+            <h3>Curso: {course?.title}</h3>
 
-          <h2>Dados Pessoais (Preencher e enviar)</h2>
-          <div className="form-group">
-            <label htmlFor="name"><IoPersonOutline /> Nome Completo</label>
-            <input type="text" id="name" name="name" value={formData.name} onChange={handleFormChange} required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email"><IoMailOutline /> E-mail</label>
-            <input type="email" id="email" name="email" value={formData.email} onChange={handleFormChange} required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="whatsapp"><IoLogoWhatsapp /> WhatsApp (com DDD)</label>
-            <input type="text" id="whatsapp" name="whatsapp" value={formData.whatsapp} onChange={handleFormChange} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="address"><IoLocationOutline /> Endereço Completo</label>
-            <input type="text" id="address" name="address" value={formData.address} onChange={handleFormChange} placeholder="CEP, Rua, Nº, Bairro, Cidade, Estado, País" />
-          </div>
+            <h2>Dados Pessoais (Preencher e enviar)</h2>
+            <div className="form-group">
+              <label htmlFor="name"><IoPersonOutline /> Nome Completo</label>
+              <input type="text" id="name" name="name" value={formData.name} onChange={handleFormChange} required />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email"><IoMailOutline /> E-mail</label>
+              <input type="email" id="email" name="email" value={formData.email} onChange={handleFormChange} required />
+            </div>
+            <div className="form-group">
+              <label htmlFor="whatsapp"><IoLogoWhatsapp /> WhatsApp (com DDD)</label>
+              <input type="text" id="whatsapp" name="whatsapp" value={formData.whatsapp} onChange={handleFormChange} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="address"><IoLocationOutline /> Endereço Completo</label>
+              <input type="text" id="address" name="address" value={formData.address} onChange={handleFormChange} placeholder="CEP, Rua, Nº, Bairro, Cidade, Estado, País" />
+            </div>
 
-          <h2>Questionário (Preencher e enviar)</h2>
-          {course?.questionnaire.questions.map(q => renderQuestion(q))}
+            <h2>Questionário (Preencher e enviar)</h2>
+            {course?.questionnaire.questions.map(q => renderQuestion(q))}
 
-          <button type="submit" className="button">
-            <IoSendOutline /> Enviar Inscrição
-          </button>
+            <button type="submit" className="button">
+              <IoSendOutline /> Enviar Inscrição
+            </button>
 
-          <div className="contact-info">
-            <h3>Endereço para Envio de Inscrição</h3>
-            <p><IoPersonOutline /> <strong>Nome:</strong> ARY VIEIRA BARRADAS</p>
-            <p><IoMailOutline /> <strong>E-mail:</strong> barradasary@gmail.com</p>
-            <p><IoLogoWhatsapp /> <strong>WhatsApp:</strong> +55 21 999635847</p>
-            <p><IoLocationOutline /> <strong>Endereço:</strong> CEP: 22.231.110; Rua: Coelho Neto – Nº 49 – Ap. 401 – Laranjeiras – Rio de Janeiro – Brasil</p>
-          </div>
-        </form>
-      )}
-    </div>
+            <div className="contact-info">
+              <h3>Endereço para Envio de Inscrição</h3>
+              <p><IoPersonOutline /> <strong>Nome:</strong> ARY VIEIRA BARRADAS</p>
+              <p><IoMailOutline /> <strong>E-mail:</strong> barradasary@gmail.com</p>
+              <p><IoLogoWhatsapp /> <strong>WhatsApp:</strong> +55 21 999635847</p>
+            </div>
+          </form>
+        )}
+      </div>
+    </>
   );
 };
 

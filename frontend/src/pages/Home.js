@@ -38,12 +38,14 @@ const Home = () => {
       <section className="home-welcome page-container">
         <div className="two-column-layout">
           <div className="column-text">
-            <h2>Bem-vindo ao nosso centro de qualificação</h2>
             <p>
               Com as inovações tecnólogicas recentes as empresas do setor público e privado passaram a exigir dos concorrentes a cargos ou funções técnicas, desempenhos que os obrigam a adquirir novos conhecimentos teóricos; conhecimentos estes, que não foram obtidos na formação escolar do pretendente, quer seja de nível superior ou não.
             </p>
             <p>
               Grande parte desses conteúdos, podem estar no escopo das disciplinas dos cursos de Matemática Financeira e Estatística Básica oferecidos aqui.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
             </p>
           </div>
           <div className="column-image">

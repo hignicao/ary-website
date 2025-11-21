@@ -18,7 +18,7 @@ const CourseCard = ({ course }) => {
           </li>
           <li>
             <IoPricetagOutline />
-            <strong>Investimento:</strong> R$ {Number(course.price).toFixed(2).replace('.', ',')}
+            <strong>Valor do curso:</strong> R$ {Number(course.price).toFixed(2).replace('.', ',')}
           </li>
         </ul>
       </div>

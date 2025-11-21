@@ -11,7 +11,6 @@ import {
 } from "react-icons/io5";
 import Hero from '../components/Hero';
 
-// A função getHeroImage permanece a mesma
 const getHeroImage = (courseId) => {
   if (courseId == 1) {
     return (
@@ -117,7 +116,6 @@ const CourseDetail = () => {
 
   return (
     <>
-      {/* --- BOTÃO MOVIDO PARA CIMA --- */}
       <button onClick={() => navigate(-1)} className="button-back">
         <IoArrowBack /> Voltar
       </button>
@@ -132,12 +130,12 @@ const CourseDetail = () => {
           {prevCourse && (
             <Link to={`/curso/${prevCourse.id}`} className="course-nav-link prev">
               <IoArrowBack />
-              <span>Curso Anterior</span>
+              <span>Anterior</span>
             </Link>
           )}
           {nextCourse && (
             <Link to={`/curso/${nextCourse.id}`} className="course-nav-link next">
-              <span>Próximo Curso</span>
+              <span>Próximo</span>
               <IoArrowForward />
             </Link>
           )}
@@ -153,7 +151,7 @@ const CourseDetail = () => {
             <span>{course.schedule}</span>
           </div>
           <div className="detail-item">
-            <strong>Investimento</strong>
+            <strong>Valor do curso</strong>
             <span>R$ {Number(course.price).toFixed(2).replace('.', ',')}</span>
           </div>
           <div className="detail-item">
@@ -185,10 +183,17 @@ const CourseDetail = () => {
         <h3 className="icon-heading">
           <IoLibraryOutline /> Conteúdo Programático
         </h3>
+
         <ul className="syllabus-list">
-          {course.syllabus.items.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
+          {course.syllabus.items.map((item, index) => {
+            const label = typeof item === 'object' ? item.label : item;
+            const level = typeof item === 'object' ? item.level : 0;
+            return (
+              <li key={index} className={`syllabus-item level-${level}`}>
+                {label}
+              </li>
+            );
+          })}
         </ul>
 
         <div style={{ textAlign: 'center', marginTop: '2rem' }}>

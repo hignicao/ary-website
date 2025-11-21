@@ -1,37 +1,34 @@
-/* --- Global Styles & Variables --- */
+/* =========================================
+   1. VARIÁVEIS E CONFIGURAÇÕES GLOBAIS
+   ========================================= */
 :root {
-  --primary-color: #0a2342; /* Azul escuro, clássico */
-  --secondary-color: #d4af37; /* Dourado/Mostarda, toque de elegância */
+  /* Cores Institucionais */
+  --primary-color: #0a2342;    /* Azul escuro, clássico */
+  --secondary-color: #d4af37;  /* Dourado/Mostarda, toque de elegância */
+
+  /* Cores de Fundo e Texto */
   --background-color: #f4f4f9; /* Fundo cinza claro, suave */
   --text-color: #333;
   --light-text-color: #fff;
   --border-color: #ddd;
+
+  /* Efeitos */
   --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  /* Tipografia */
   --font-main: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   --font-headings: 'Georgia', 'Times New Roman', serif;
 }
 
+/* =========================================
+   2. ESTILOS BASE (Reset e Tipografia)
+   ========================================= */
 body {
   margin: 0;
   font-family: var(--font-main);
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
-}
-
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.main-content {
-  flex: 1;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
-  box-sizing: border-box;
 }
 
 h1, h2, h3 {
@@ -50,6 +47,41 @@ a:hover {
   color: var(--secondary-color);
 }
 
+/* =========================================
+   3. LAYOUT PRINCIPAL (Wrappers)
+   ========================================= */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.page-container {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.page-container h1 {
+  border-bottom: 3px solid var(--secondary-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* =========================================
+   4. COMPONENTES UI GLOBAIS (Botões)
+   ========================================= */
+/* Botão Principal */
 .button, button {
   background-color: var(--primary-color);
   color: var(--light-text-color);
@@ -62,7 +94,10 @@ a:hover {
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: background-color 0.3s, transform 0.2s;
-  display: inline-block;
+  display: inline-flex; /* Ajustado para alinhar ícones */
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
   text-align: center;
 }
 
@@ -71,36 +106,81 @@ a:hover {
   transform: translateY(-2px);
 }
 
+/* Botão Secundário */
 .button-secondary {
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .button-secondary:hover {
-    background-color: #b89a30;
+  background-color: #b89a30;
 }
 
+/* Botão "Voltar" (Estilo Moderno/Fantasma) */
+.button-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  padding: 0.6rem 1.2rem;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
 
-/* --- Header --- */
+.button-back:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+  transform: translateX(-3px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.button-back svg {
+  font-size: 1.1rem;
+}
+
+/* =========================================
+   5. CABEÇALHO (Header - Estilo EBC)
+   ========================================= */
 .header {
   background-color: var(--primary-color);
-  color: var(--light-text-color);
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: #fff;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  border-bottom: 4px solid var(--secondary-color);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Parte Superior: Logo */
+.header-top {
+  padding: 2rem 1rem 1rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header-logo a {
-  color: var(--light-text-color);
+  color: #fff;
   font-family: var(--font-headings);
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.header-logo a:hover {
-    color: var(--secondary-color);
+/* Parte Inferior: Navegação */
+.header-nav {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 0;
 }
 
 .header-nav ul {
@@ -108,33 +188,52 @@ a:hover {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
+.header-nav li {
+  display: flex;
+  align-items: center;
+}
+
+/* Separadores verticais */
+.header-nav li:not(:last-child)::after {
+  content: '|';
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 1.2rem;
+  margin-top: -2px;
+}
+
+/* Links do Menu */
 .header-nav a {
-  color: var(--light-text-color);
-  font-weight: bold;
-  font-size: 1rem;
-  position: relative;
-  padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  border-bottom: 3px solid transparent;
 }
 
-.header-nav a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--secondary-color);
-  transition: width 0.3s;
+.header-nav a:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-.header-nav a:hover::after {
-  width: 100%;
+.header-nav a.active {
+  color: var(--secondary-color);
+  border-bottom: 3px solid var(--secondary-color);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* --- Footer --- */
+/* =========================================
+   6. RODAPÉ (Footer)
+   ========================================= */
 .footer {
   background-color: var(--primary-color);
   color: #a7c0e0;
@@ -143,7 +242,56 @@ a:hover {
   margin-top: auto;
 }
 
-/* --- Home Page & Course Card --- */
+/* =========================================
+   7. HERO & BANNERS
+   ========================================= */
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  color: #fff;
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(10, 35, 66, 0.6), rgba(10, 35, 66, 0.2));
+}
+
+.hero-title {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+/* =========================================
+   8. PÁGINA INICIAL & CARDS DE CURSO
+   ========================================= */
 .home-welcome {
   text-align: center;
   margin-bottom: 3rem;
@@ -196,26 +344,18 @@ a:hover {
 
 .course-card-details li {
   margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .course-card-footer {
   padding: 0 1.5rem 1.5rem;
 }
 
-/* --- Course Detail & Curriculum Page --- */
-.page-container {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 8px;
-  box-shadow: var(--card-shadow);
-}
-
-.page-container h1 {
-  border-bottom: 3px solid var(--secondary-color);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
+/* =========================================
+   9. PÁGINA DE DETALHES DO CURSO
+   ========================================= */
 .details-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -236,8 +376,23 @@ a:hover {
   color: var(--primary-color);
 }
 
-/* --- Estilo Compacto para o Conteúdo do Curso (Syllabus) --- */
+/* Layout de Colunas (Texto + Imagem) */
+.two-column-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
 
+.column-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+/* Estilo do Syllabus (Conteúdo Programático) */
 .syllabus-list {
   list-style: none;
   padding: 0;
@@ -245,27 +400,22 @@ a:hover {
 }
 
 .syllabus-item {
-  /* Reduzi o padding vertical para aproximar as linhas */
   padding: 0.15rem 0;
   color: #444;
-  line-height: 1.3; /* Altura da linha mais compacta */
+  line-height: 1.3;
 }
 
-/* Nível 0 (Títulos Principais): Negrito, cor de destaque e fundo sutil */
 .syllabus-item.level-0 {
   font-weight: 700;
   color: var(--primary-color);
-  /* Menos espaço antes do próximo bloco */
   margin-top: 0.75rem;
   margin-bottom: 0.25rem;
   font-size: 1rem;
-  /* Um fundo cinza claro ajuda a separar os blocos visualmente sem usar muito espaço */
   background-color: #f0f2f5;
   padding: 0.4rem 0.75rem;
   border-radius: 4px;
 }
 
-/* Nível 1 (Subtópicos): Indentação ajustada */
 .syllabus-item.level-1 {
   margin-left: 1rem;
   font-weight: 600;
@@ -273,7 +423,6 @@ a:hover {
   font-size: 0.95rem;
 }
 
-/* Nível 2 (Detalhes): Indentação dupla e fonte ligeiramente menor */
 .syllabus-item.level-2 {
   margin-left: 2.5rem;
   font-size: 0.9rem;
@@ -281,7 +430,39 @@ a:hover {
   color: #555;
 }
 
-/* --- Enrollment Form --- */
+/* Navegação entre cursos (Anterior/Próximo) */
+.course-navigation {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.course-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.course-nav-link:hover {
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+}
+
+.course-nav-link.next {
+  flex-direction: row-reverse;
+}
+
+/* =========================================
+   10. FORMULÁRIOS & INSCRIÇÃO
+   ========================================= */
 .form-container {
   max-width: 800px;
   margin: 0 auto;
@@ -296,7 +477,9 @@ a:hover {
 }
 
 .form-group label {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin-bottom: 0.5rem;
   font-weight: bold;
   color: var(--primary-color);
@@ -319,85 +502,11 @@ a:hover {
 }
 
 .radio-group label, .checkbox-group label {
-    margin-right: 1rem;
-    font-weight: normal;
+  margin-right: 1rem;
+  font-weight: normal;
 }
 
-/* --- Admin --- */
-.admin-login-container, .admin-dashboard {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: var(--card-shadow);
-}
-
-.admin-dashboard h1, .admin-login-container h1 {
-    text-align: center;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.stat-card {
-    background-color: var(--background-color);
-    padding: 1rem;
-    border-radius: 5px;
-}
-
-.stat-card h3 {
-    margin: 0 0 0.5rem 0;
-}
-
-.stat-card p {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    margin: 0;
-}
-
-.application-list table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.application-list th, .application-list td {
-    padding: 0.75rem;
-    border: 1px solid var(--border-color);
-    text-align: left;
-}
-
-.application-list th {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-/* --- Estilos para Alterações --- */
-
-.button-back {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem; /* Espaço entre o ícone e o texto */
-  background: none;
-  border: none;
-  color: var(--primary-color);
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 0; /* Remove padding antigo */
-  margin-bottom: 1.5rem; /* Adiciona espaço abaixo dele */
-}
-
-.button-back:hover {
-  color: var(--secondary-color);
-}
-
+/* Informações de Contato */
 .contact-info {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
@@ -408,187 +517,184 @@ a:hover {
   margin-top: 0;
 }
 
-/* --- Estilos para Ícones --- */
-
-/* Alinha o ícone no botão "Voltar" */
-.button-back {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem; /* Espaço entre o ícone e o texto */
-}
-
-/* Alinha ícones no menu de navegação */
-.header-nav a {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Alinha ícones nos detalhes do card */
-.course-card-details li {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-/* Alinha ícones nas informações de contato */
 .contact-info p {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 
-/* --- Atualização de Estilos para Ícones --- */
-
-/* Modifica o .button para alinhar ícones (como em "Enviar") */
-.button, button[type="submit"] {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-}
-
-/* Alinha ícones em labels de formulário */
-.form-group label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: bold;
-  color: var(--primary-color);
-}
-
-/* Classe para alinhar ícones em títulos (h2, h3) */
+/* =========================================
+   11. UTILITÁRIOS DE ÍCONES
+   ========================================= */
 .icon-heading {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 
-/* Classe para listas que usam ícones como bullets */
 .icon-list {
   list-style: none;
   padding-left: 0.5rem;
 }
+
 .icon-list li {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
   margin-bottom: 0.75rem;
 }
+
 .icon-list li svg {
-  flex-shrink: 0; /* Impede que o ícone seja esmagado */
+  flex-shrink: 0;
   margin-top: 0.25rem;
   color: var(--primary-color);
 }
 
-/* --- Estilos para Banners (Hero) --- */
-.hero-container {
-  position: relative;
-  width: 100%;
-  height: 300px; /* Altura do banner */
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 2.5rem;
-  color: #fff;
-}
-
-.hero-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Garante que a imagem cubra o espaço */
-  filter: brightness(0.6); /* Escurece a imagem */
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, rgba(10, 35, 66, 0.6), rgba(10, 35, 66, 0.2));
-}
-
-.hero-title {
-  position: absolute;
-  bottom: 2rem;
-  left: 2rem;
-  font-size: 3rem;
-  color: #fff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  margin: 0;
-}
-
-/* --- Estilos para Layout em Colunas --- */
-.two-column-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Duas colunas de tamanho igual */
-  gap: 2.5rem;
-  align-items: center;
-  margin-bottom: 2.5rem;
-}
-
-.column-image img {
-  width: 100%;
-  height: auto;
+/* =========================================
+   12. ÁREA ADMINISTRATIVA
+   ========================================= */
+.admin-login-container, .admin-dashboard {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff;
   border-radius: 8px;
   box-shadow: var(--card-shadow);
 }
 
-/* Regra para telas pequenas (mobile) */
+.admin-dashboard h1, .admin-login-container h1 {
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background-color: var(--background-color);
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.stat-card h3 {
+  margin: 0 0 0.5rem 0;
+}
+
+.stat-card p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.application-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.application-list th, .application-list td {
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  text-align: left;
+}
+
+.application-list th {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* =========================================
+   13. RESPONSIVIDADE (Media Queries)
+   ========================================= */
 @media (max-width: 768px) {
+  /* Ajustes de Header */
+  .header-logo a { font-size: 1.8rem; }
+  .header-nav ul { flex-direction: column; }
+  .header-nav li { width: 100%; justify-content: center; }
+  .header-nav li::after { display: none; }
+  .header-nav a { width: 100%; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+  /* Ajustes de Layout */
   .two-column-layout {
-    grid-template-columns: 1fr; /* Coluna única em telas menores */
+    grid-template-columns: 1fr;
   }
   .column-image {
-    order: -1; /* Põe a imagem no topo em telas menores */
+    order: -1; /* Imagem acima do texto no mobile */
   }
+
+  /* Ajustes de Tipografia */
   .hero-title {
     font-size: 2.2rem;
   }
-}
 
-/* --- Estilos para NOVA Navegação de Cursos --- */
-.course-navigation {
-  display: flex; /* Flex-direction: row por padrão */
-  align-items: center;
-  /* justify-content é aplicado via style inline no React */
-  margin-bottom: 1.5rem; /* Empurra o "details-grid" para baixo */
-  width: 100%;
-}
-
-.course-nav-link {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: var(--primary-color);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.course-nav-link:hover {
-  background-color: var(--background-color);
-  color: var(--secondary-color);
-}
-
-/* Removemos o "justify-content: flex-end" daqui */
-.course-nav-link.next {
-  flex-direction: row-reverse; /* Inverte a ordem do ícone e texto */
-}
-
-@media (max-width: 768px) {
+  /* Elementos Ocultos */
   .course-nav-link span {
-    display: none;
+    display: none; /* Esconde texto "Próximo/Anterior" */
   }
+}
+
+/* --- FAQ (Estilo Acordeão EBC) --- */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Espaço entre as perguntas */
+  margin-top: 1rem;
+}
+
+.faq-item {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  overflow: hidden; /* Garante que o conteúdo interno respeite as bordas arredondadas */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Sombra leve */
+  transition: border-color 0.2s;
+}
+
+.faq-item:hover {
+  border-color: var(--primary-color); /* Borda fica azul ao passar o mouse */
+}
+
+.faq-question {
+  padding: 1.2rem 1.5rem;
+  background-color: #fff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--primary-color); /* Azul Institucional */
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s;
+  user-select: none; /* Evita seleção de texto ao clicar rápido */
+}
+
+.faq-question:hover {
+  background-color: #f4f9ff; /* Fundo azul bem clarinho no hover */
+}
+
+/* Ícone (+ / -) */
+.faq-question svg {
+  color: var(--accent-color); /* Ícone Verde */
+  font-size: 1.5rem;
+  min-width: 24px; /* Garante que o ícone não encolha em telas pequenas */
+}
+
+.faq-answer {
+  padding: 1.5rem;
+  background-color: #fafafa; /* Fundo levemente cinza para a resposta */
+  border-top: 1px solid #eee;
+  color: #444;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  animation: fadeIn 0.3s ease-in-out; /* Animação suave de entrada */
+}
+
+/* Pequena animação para o texto aparecer suavemente */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
 }

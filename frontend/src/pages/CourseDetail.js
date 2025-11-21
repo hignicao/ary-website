@@ -11,12 +11,13 @@ import {
 } from "react-icons/io5";
 import Hero from '../components/Hero';
 
+// Função volta a retornar JSX (<img>)
 const getHeroImage = (courseId) => {
   if (courseId == 1) {
     return (
       <img
         src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzc0fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA&ixlib=rb-4.0.3&q=80&w=1080"
-        alt="Gráficos financeiros e análise de mercado"
+        alt="Gráficos financeiros"
       />
     );
   }
@@ -24,7 +25,7 @@ const getHeroImage = (courseId) => {
     return (
       <img
         src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzc0fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA&ixlib=rb-4.0.3&q=80&w=1080"
-        alt="Dashboards de análise de dados e estatística"
+        alt="Dashboards de estatística"
       />
     );
   }
@@ -40,12 +41,9 @@ const CourseDetail = () => {
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-
   const [nextCourse, setNextCourse] = useState(null);
   const [prevCourse, setPrevCourse] = useState(null);
-
   const { id } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCourseData = async () => {
@@ -55,11 +53,9 @@ const CourseDetail = () => {
       setPrevCourse(null);
 
       try {
-        const courseDetailPromise = axios.get(`/api/courses/${id}`);
-        const allCoursesPromise = axios.get('/api/courses');
         const [courseDetailResponse, allCoursesResponse] = await Promise.all([
-          courseDetailPromise,
-          allCoursesPromise
+          axios.get(`/api/courses/${id}`),
+          axios.get('/api/courses')
         ]);
 
         const currentCourse = courseDetailResponse.data;
@@ -67,7 +63,6 @@ const CourseDetail = () => {
 
         if (currentCourse) {
           setCourse(currentCourse);
-
           const currentIndex = allCourses.findIndex(c => c.id == id);
 
           if (currentIndex !== -1) {
@@ -83,10 +78,8 @@ const CourseDetail = () => {
         } else {
           setError('Curso não encontrado.');
         }
-
       } catch (err) {
         setError('Curso não encontrado ou erro ao carregar.');
-        console.error(err);
       } finally {
         setLoading(false);
       }
@@ -95,15 +88,8 @@ const CourseDetail = () => {
   }, [id]);
 
   const getNavStyle = () => {
-    if (prevCourse && nextCourse) {
-      return { justifyContent: 'space-between' };
-    }
-    if (!prevCourse && nextCourse) {
-      return { justifyContent: 'flex-end' };
-    }
-    if (prevCourse && !nextCourse) {
-      return { justifyContent: 'flex-start' };
-    }
+    if (prevCourse && nextCourse) return { justifyContent: 'space-between' };
+    if (!prevCourse && nextCourse) return { justifyContent: 'flex-end' };
     return { justifyContent: 'flex-start' };
   };
 
@@ -116,16 +102,15 @@ const CourseDetail = () => {
 
   return (
     <>
-      <button onClick={() => navigate(-1)} className="button-back">
-        <IoArrowBack /> Voltar
-      </button>
+      <Link to="/" className="button-back">
+        <IoArrowBack /> Voltar ao Início
+      </Link>
 
       <Hero title={course.title}>
         {heroImage}
       </Hero>
 
       <div className="page-container">
-
         <nav className="course-navigation" style={navStyle}>
           {prevCourse && (
             <Link to={`/curso/${prevCourse.id}`} className="course-nav-link prev">

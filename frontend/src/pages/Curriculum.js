@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Usando Link
 import {
+  IoArrowBack,
   IoSchoolOutline,
   IoSearchOutline,
   IoPeopleOutline,
@@ -11,10 +13,14 @@ import Hero from '../components/Hero';
 const Curriculum = () => {
   return (
     <>
+      <Link to="/" className="button-back">
+        <IoArrowBack /> Voltar ao Início
+      </Link>
+
       <Hero title="Currículo do Professor">
         <img
-          src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80"
-          alt="Sala de aula universitária"
+          src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzc0fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA&ixlib=rb-4.0.3&q=80&w=1080"
+          alt="Biblioteca"
         />
       </Hero>
 

@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import CourseDetail from './pages/CourseDetail';
 import Enrollment from './pages/Enrollment';
 import Curriculum from './pages/Curriculum';
+import FAQ from './pages/FAQ'; // Importação do FAQ
 import AdminLogin from './components/Admin/AdminLogin';
 import AdminDashboard from './components/Admin/AdminDashboard';
 import PrivateRoute from './components/Admin/PrivateRoute';
@@ -22,6 +23,7 @@ function App() {
             <Route path="/curso/:id" element={<CourseDetail />} />
             <Route path="/inscricao/:courseId" element={<Enrollment />} />
             <Route path="/curriculo" element={<Curriculum />} />
+            <Route path="/faq" element={<FAQ />} /> {/* Rota do FAQ adicionada */}
             <Route path="/admin" element={<AdminLogin />} />
             <Route
               path="/admin/dashboard"

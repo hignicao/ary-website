@@ -636,18 +636,20 @@ a:hover {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: 1rem; /* Margem para não colar na borda em telas pequenas */
+  box-sizing: border-box;
 }
 
 .modal-content {
   background: white;
-  width: 90%;
+  width: 100%;
   max-width: 800px;
-  max-height: 90vh;
+  max-height: 90vh; /* Altura máxima de 90% da tela */
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  flex-direction: column; /* Organiza Topo, Meio e Fim verticalmente */
+  overflow: hidden; /* Impede que o container geral tenha scroll */
   animation: fadeIn 0.2s ease-out;
 }
 
@@ -658,12 +660,13 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0; /* Cabeçalho nunca encolhe */
 }
 
 .modal-header h2 {
   margin: 0;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .close-button {
@@ -672,20 +675,33 @@ a:hover {
   color: white;
   font-size: 1.5rem;
   cursor: pointer;
+  padding: 0;
+  line-height: 1;
 }
 
 .modal-body {
   padding: 2rem;
-  overflow-y: auto;
+  overflow-y: auto; /* SÓ o corpo tem scroll */
+  flex: 1; /* Ocupa todo o espaço disponível */
 }
 
 .modal-actions {
-  padding: 1.5rem;
+  padding: 1rem 1.5rem;
   border-top: 1px solid #ddd;
   background-color: #f9f9f9;
   display: flex;
   justify-content: flex-end;
-  gap: 1rem;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0; /* Rodapé nunca encolhe */
+  flex-wrap: wrap; /* Permite que os botões vão para baixo se faltar espaço */
+}
+
+/* Ajuste nos botões do modal para ficarem bonitos se quebrarem linha */
+.modal-actions .button {
+  margin: 0;
+  font-size: 0.85rem;
+  padding: 0.6rem 1rem;
 }
 
 .info-grid {
@@ -817,4 +833,14 @@ a:hover {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-5px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Ajuste Mobile --- */
+@media (max-width: 768px) {
+  .modal-actions {
+    justify-content: center; /* Centraliza botões no mobile */
+  }
+  .info-grid {
+    grid-template-columns: 1fr; /* Uma coluna só no mobile */
+  }
 }

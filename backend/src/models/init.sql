@@ -33,7 +33,6 @@ CREATE TABLE IF NOT EXISTS questionnaire_answers (
     answer TEXT
 );
 
-
 -- Tabela de Administradores
 CREATE TABLE IF NOT EXISTS admins (
     id SERIAL PRIMARY KEY,
@@ -41,10 +40,18 @@ CREATE TABLE IF NOT EXISTS admins (
     password_hash VARCHAR(255) NOT NULL
 );
 
--- Limpar dados antigos para garantir consistência
+-- LIMPEZA DE DADOS
 TRUNCATE TABLE courses RESTART IDENTITY CASCADE;
+TRUNCATE TABLE admins RESTART IDENTITY CASCADE;
 
--- Inserir Cursos Iniciais
+-- 1. INSERIR USUÁRIO ADMIN PADRÃO
+-- Usuário: admin
+-- Senha: 123456 (Hash atualizado)
+INSERT INTO admins (username, password_hash)
+VALUES ('admin', '$2a$10$hoQQ1A0qkfzAXiLFbkeuoOcQ9SbElFxat3ujv8AhhwnCgwqhH.MMy');
+-- Nota: Se este hash falhar, use o script Python abaixo para gerar um novo.
+
+-- 2. INSERIR CURSOS (Conteúdo atualizado)
 INSERT INTO courses (title, workload, price, payment_info, schedule, methodology, syllabus, questionnaire) VALUES
 ('Matemática Financeira', 40, 1000.00, 'À vista ou em 2 parcelas mensais de R$ 500,00 (cheques pré-datados).', 'Terças e Quintas-feiras das 9 às 11hs',
 'A metodologia do curso consiste inicialmente na apresentação da programação e calendário do curso, seguido da indicação das ferramentas, tais como, a HP 12C e o EXCEL, que serão utilizadas pelos alunos durante a aprendizagem e na solução dos exercícios de fixação. Ambas estão incluídos em Anexo ao final do texto básico do curso: "Conquistando o seu futuro Financeiro: Planejamento em tempos de incertezas", de minha autoria e do Prof. Paulo Gurgel. Para a fixação do conteúdo serão liberadas as listas dos exercícios para a resolução dos alunos. Posteriormente, as dúvidas nas soluções serão dirimidas com a ajuda e apoio dos auxiliares do curso. Na Bibliografia auxiliar teremos também as indicações de outros exercícios existentes em textos complementares.',

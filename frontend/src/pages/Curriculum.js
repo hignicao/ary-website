@@ -10,6 +10,8 @@ import {
 } from "react-icons/io5";
 import Hero from '../components/Hero';
 
+import curriculum from '../assets/images/curriculum.png';
+
 const Curriculum = () => {
   return (
     <>
@@ -19,7 +21,7 @@ const Curriculum = () => {
 
       <Hero title="Currículo do Professor">
         <img
-          src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzc0fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA&ixlib=rb-4.0.3&q=80&w=1080"
+          src={curriculum}
           alt="Biblioteca"
         />
       </Hero>

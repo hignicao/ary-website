@@ -3,6 +3,9 @@ import axios from 'axios';
 import CourseCard from '../components/CourseCard';
 import Hero from '../components/Hero';
 
+import bannerHome from '../assets/images/banner.png';
+import descriptionHome from '../assets/images/description.png';
+
 const Home = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,8 +32,8 @@ const Home = () => {
     <div>
       <Hero title="Qualificação Profissional ao seu Alcance">
         <img
-          src="https://images.unsplash.com/photo-1542744095-291d1f67b221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzc0fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA&ixlib=rb-4.0.3&q=80&w=1080"
-          alt="Reunião de negócios moderna"
+          src={bannerHome}
+          alt="Pessoa de frente ao computador estudando"
         />
       </Hero>
 
@@ -38,19 +41,19 @@ const Home = () => {
         <div className="two-column-layout">
           <div className="column-text">
             <p>
-              Com as inovações tecnológicas recentes as empresas do setor público e privado passaram a exigir dos concorrentes a cargos ou funções técnicas, desempenhos que os obrigam a adquirir novos conhecimentos teóricos; conhecimentos estes, que não foram obtidos na formação escolar do pretendente, quer seja de nível superior ou não.
+              Com as inovações tecnólogicas recentes as empresas do setor público e privado passaram a exigir dos candidatos a cargos ou funções técnicas  desempenhos que os obrigam a adquirir novos conhecimentos teóricos, conhecimentos esses que não foram obtidos na formação escolar do pretendente, quer seja de nível superior ou não.
             </p>
             <p>
-              Em novos Editais de Concursos, esses conhecimentos aparecem quando os conteúdos exigido são apresentados aos proponentes dos cargos. É o caso de concursos públicos para empresas estatais, tais como, BNDES, Petrobras, Banco do Brasil, CEF-Caixa Econômica Federal, CVM-Comissão de Valores Mobiliários, SUSEP-Superintendência de Seguros Privados, INPI-Instituto Nacional de Patentes Industriais, ou em Ministérios que exigem Técnicos de Nível Superior Específicos.
+              Em novos Editais de Concursos, esses conhecimentos aparecem quando os conteúdos exigidos são apresentados aos proponentes aos cargos. É o caso de concursos públicos para empresas estatais, tais como, BNDES, Petrobras, Banco do Brasil, CEF-Caixa Econômica Federal, CVM-Comissão de Valores Mobiliários, SUSEP-Superintendência de Seguros Privados, INPI-Instituto Nacional de Patentes Industriais, ou em Ministérios que exigem Técnicos de Nível Superior Específicos.
             </p>
             <p>
-              Grande parte desses conteúdos, podem estar no escopo das disciplinas dos cursos de Matemática Financeira e Estatística Básica oferecidos aqui. Independente dessa utilização, na economia financeira há diversas formas através das quais as pessoas e as empresas podem analisar situações envolvendo a variação do dinheiro no tempo e também fazer as aplicações das suas reservas no mercado financeiro.
+              Grande parte desses conteúdos  pode estar no escopo das disciplinas dos cursos de Matemática Financeira e Estatística Básica oferecidos aqui. Independente dessa utilização, na economia financeira há diversas formas através das quais as pessoas e as empresas podem analisar situações envolvendo a variação do dinheiro no tempo e também fazer as aplicações das suas reservas no mercado financeiro. Uma delas é utilizando os conceitos básicos da Matemática Financeira, juntamente com outros conteúdos de estatística associados.
             </p>
           </div>
           <div className="column-image">
             <img
-              src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzc0fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA&ixlib=rb-4.0.3&q=80&w=1080"
-              alt="Profissionais estudando em volta de um notebook"
+              src={descriptionHome}
+              alt="Profissionais em reunião"
             />
           </div>
         </div>

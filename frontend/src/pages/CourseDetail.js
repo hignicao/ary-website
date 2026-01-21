@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import {
   IoArrowBack,
@@ -10,32 +10,6 @@ import {
   IoLibraryOutline
 } from "react-icons/io5";
 import Hero from '../components/Hero';
-
-// Função volta a retornar JSX (<img>)
-const getHeroImage = (courseId) => {
-  if (courseId == 1) {
-    return (
-      <img
-        src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzc0fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA&ixlib=rb-4.0.3&q=80&w=1080"
-        alt="Gráficos financeiros"
-      />
-    );
-  }
-  if (courseId == 2) {
-    return (
-      <img
-        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzc0fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA&ixlib=rb-4.0.3&q=80&w=1080"
-        alt="Dashboards de estatística"
-      />
-    );
-  }
-  return (
-    <img
-      src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzc0fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA&ixlib=rb-4.0.3&q=80&w=1080"
-      alt="Biblioteca acadêmica"
-    />
-  );
-};
 
 const CourseDetail = () => {
   const [course, setCourse] = useState(null);
@@ -97,8 +71,11 @@ const CourseDetail = () => {
   if (error) return <p style={{ color: 'red' }}>{error}</p>;
   if (!course) return <p>Nenhum curso para exibir.</p>;
 
-  const heroImage = getHeroImage(course.id);
   const navStyle = getNavStyle();
+
+  // Definição dos caminhos das imagens vindas do banco
+  const bannerSrc = course.image_banner ? `/images/${course.image_banner}` : null;
+  const thumbSrc = course.image_thumb ? `/images/${course.image_thumb}` : null;
 
   return (
     <>
@@ -107,7 +84,12 @@ const CourseDetail = () => {
       </Link>
 
       <Hero title={course.title}>
-        {heroImage}
+        {/* Banner usando a imagem do banco de dados */}
+        {bannerSrc ? (
+            <img src={bannerSrc} alt={`Banner ${course.title}`} />
+        ) : (
+            <img src="https://via.placeholder.com/1080x300?text=Sem+Imagem" alt="Imagem indisponível" />
+        )}
       </Hero>
 
       <div className="page-container">
@@ -158,10 +140,19 @@ const CourseDetail = () => {
             <p>{course.methodology}</p>
           </div>
           <div className="column-image">
-            <img
-              src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzc0fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA&ixlib=rb-4.0.3&q=80&w=1080"
-              alt="Calculadora HP 12C clássica"
-            />
+            {/* Imagem lateral usando o banco de dados e com trava de tamanho */}
+            {thumbSrc && (
+                <img
+                    src={thumbSrc}
+                    alt="Ilustração Metodologia"
+                    style={{
+                        maxWidth: '100%',  // Garante que não ultrapasse a coluna
+                        height: 'auto',    // Mantém a proporção
+                        borderRadius: '8px',
+                        boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+                    }}
+                />
+            )}
           </div>
         </div>
 

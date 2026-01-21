@@ -2,845 +2,862 @@
    1. VARIÁVEIS E CONFIGURAÇÕES GLOBAIS
    ========================================= */
 :root {
-  /* Cores Institucionais */
-  --primary-color: #0a2342;    /* Azul escuro, clássico */
-  --secondary-color: #d4af37;  /* Dourado/Mostarda, toque de elegância */
+	/* Cores Institucionais */
+	--primary-color: #0a2342; /* Azul escuro, clássico */
+	--secondary-color: #d4af37; /* Dourado/Mostarda, toque de elegância */
 
-  /* Cores de Fundo e Texto */
-  --background-color: #f4f4f9; /* Fundo cinza claro, suave */
-  --text-color: #333;
-  --light-text-color: #fff;
-  --border-color: #ddd;
+	/* Cores de Fundo e Texto */
+	--background-color: #f4f4f9; /* Fundo cinza claro, suave */
+	--text-color: #333;
+	--light-text-color: #fff;
+	--border-color: #ddd;
 
-  /* Efeitos */
-  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	/* Efeitos */
+	--card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-  /* Tipografia */
-  --font-main: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  --font-headings: 'Georgia', 'Times New Roman', serif;
+	/* Tipografia */
+	--font-main: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+	--font-headings: "Georgia", "Times New Roman", serif;
 }
 
 /* =========================================
    2. ESTILOS BASE (Reset e Tipografia)
    ========================================= */
 body {
-  margin: 0;
-  font-family: var(--font-main);
-  background-color: var(--background-color);
-  color: var(--text-color);
-  line-height: 1.6;
+	margin: 0;
+	font-family: var(--font-main);
+	background-color: var(--background-color);
+	color: var(--text-color);
+	line-height: 1.6;
 }
 
-h1, h2, h3 {
-  font-family: var(--font-headings);
-  color: var(--primary-color);
-  margin-top: 0;
+h1,
+h2,
+h3 {
+	font-family: var(--font-headings);
+	color: var(--primary-color);
+	margin-top: 0;
 }
 
 a {
-  color: var(--primary-color);
-  text-decoration: none;
-  transition: color 0.3s;
+	color: var(--primary-color);
+	text-decoration: none;
+	transition: color 0.3s;
 }
 
 a:hover {
-  color: var(--secondary-color);
+	color: var(--secondary-color);
 }
 
 /* =========================================
    3. LAYOUT PRINCIPAL (Wrappers)
    ========================================= */
 .app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 
 .main-content {
-  flex: 1;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
-  box-sizing: border-box;
+	flex: 1;
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 2rem 1.5rem;
+	box-sizing: border-box;
 }
 
 .page-container {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 8px;
-  box-shadow: var(--card-shadow);
+	background: white;
+	padding: 2.5rem;
+	border-radius: 8px;
+	box-shadow: var(--card-shadow);
 }
 
 .page-container h1 {
-  border-bottom: 3px solid var(--secondary-color);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
+	border-bottom: 3px solid var(--secondary-color);
+	padding-bottom: 0.5rem;
+	margin-bottom: 1.5rem;
 }
 
 /* =========================================
    4. COMPONENTES UI GLOBAIS (Botões)
    ========================================= */
 /* Botão Principal */
-.button, button {
-  background-color: var(--primary-color);
-  color: var(--light-text-color);
-  padding: 12px 24px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: background-color 0.3s, transform 0.2s;
-  display: inline-flex; /* Ajustado para alinhar ícones */
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  text-align: center;
+.button,
+button {
+	background-color: var(--primary-color);
+	color: var(--light-text-color);
+	padding: 12px 24px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: background-color 0.3s, transform 0.2s;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	text-align: center;
 }
 
-.button:hover, button:hover {
-  background-color: #004d7a;
-  transform: translateY(-2px);
+.button:hover,
+button:hover {
+	background-color: #004d7a;
+	transform: translateY(-2px);
 }
 
 /* Botão Secundário */
 .button-secondary {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
+	background-color: var(--secondary-color);
+	color: var(--primary-color);
 }
 
 .button-secondary:hover {
-  background-color: #b89a30;
+	background-color: #b89a30;
 }
 
-/* Botão "Voltar" (Estilo Moderno/Fantasma) */
+/* Botão "Voltar" */
 .button-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--primary-color);
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  text-decoration: none !important;
-  padding: 0.6rem 1.2rem;
-  background-color: transparent;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  margin-bottom: 1.5rem;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--primary-color);
+	font-weight: 600;
+	font-size: 0.9rem;
+	text-transform: uppercase;
+	text-decoration: none !important;
+	padding: 0.6rem 1.2rem;
+	background-color: transparent;
+	border: 1px solid var(--border-color);
+	border-radius: 4px;
+	margin-bottom: 1.5rem;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
 }
 
 .button-back:hover {
-  background-color: var(--primary-color);
-  color: #fff;
-  border-color: var(--primary-color);
-  transform: translateX(-3px);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+	background-color: var(--primary-color);
+	color: #fff;
+	border-color: var(--primary-color);
+	transform: translateX(-3px);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .button-back svg {
-  font-size: 1.1rem;
+	font-size: 1.1rem;
 }
 
 /* =========================================
-   5. CABEÇALHO (Header - Estilo EBC)
+   5. CABEÇALHO (Header)
    ========================================= */
 .header {
-  background-color: var(--primary-color);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  border-bottom: 4px solid var(--secondary-color);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+	background-color: var(--primary-color);
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	border-bottom: 4px solid var(--secondary-color);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	position: relative;
+	z-index: 100;
 }
 
-/* Parte Superior: Logo */
 .header-top {
-  padding: 2rem 1rem 1rem 1rem;
-  text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	padding: 1rem 1rem; /* Padding reduzido para acomodar o logo */
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.header-content-wrapper {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+/* Container do Logo */
 .header-logo a {
-  color: #fff;
-  font-family: var(--font-headings);
-  font-size: 2.4rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-decoration: none;
-  display: inline-block;
+	display: flex; /* Remove espaços extras abaixo da imagem */
+	align-items: center;
+	text-decoration: none;
 }
 
-/* Parte Inferior: Navegação */
+/* CONTROLE DE TAMANHO DO LOGO */
+.logo-image {
+	height: 60px; /* Altura fixa para Desktop */
+	width: auto; /* Largura automática (mantém proporção) */
+	object-fit: contain;
+	transition: transform 0.3s ease;
+}
+
+.header-logo a:hover .logo-image {
+	transform: scale(1.05); /* Efeito sutil de zoom ao passar o mouse */
+}
+
+/* Botão Mobile */
+.menu-toggle {
+	display: none;
+	background: none !important;
+	border: none;
+	color: var(--secondary-color) !important;
+	font-size: 2rem;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	padding: 0 !important;
+}
+
+/* ... (Mantenha o restante do CSS da navegação .header-nav igual ao anterior) ... */
 .header-nav {
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 0;
+	background-color: rgba(0, 0, 0, 0.1);
+	padding: 0;
 }
 
 .header-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .header-nav li {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 
-/* Separadores verticais */
 .header-nav li:not(:last-child)::after {
-  content: '|';
-  color: rgba(255, 255, 255, 0.2);
-  font-size: 1.2rem;
-  margin-top: -2px;
+	content: "|";
+	color: rgba(255, 255, 255, 0.2);
+	font-size: 1.2rem;
+	margin-top: -2px;
 }
 
-/* Links do Menu */
 .header-nav a {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 1.5rem;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  text-decoration: none;
-  transition: all 0.2s;
-  border-bottom: 3px solid transparent;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 1rem 1.5rem;
+	color: rgba(255, 255, 255, 0.9);
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 0.85rem;
+	text-decoration: none;
+	transition: all 0.2s;
+	border-bottom: 3px solid transparent;
 }
 
 .header-nav a:hover {
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.05);
+	color: #fff;
+	background-color: rgba(255, 255, 255, 0.05);
 }
 
 .header-nav a.active {
-  color: var(--secondary-color);
-  border-bottom: 3px solid var(--secondary-color);
-  background-color: rgba(255, 255, 255, 0.05);
+	color: var(--secondary-color);
+	border-bottom: 3px solid var(--secondary-color);
+	background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* =========================================
    6. RODAPÉ (Footer)
    ========================================= */
 .footer {
-  background-color: var(--primary-color);
-  color: #a7c0e0;
-  text-align: center;
-  padding: 1.5rem;
-  margin-top: auto;
+	background-color: var(--primary-color);
+	color: #a7c0e0;
+	text-align: center;
+	padding: 1.5rem;
+	margin-top: auto;
 }
 
 /* =========================================
    7. HERO & BANNERS
    ========================================= */
 .hero-container {
-  position: relative;
-  width: 100%;
-  height: 300px;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 2.5rem;
-  color: #fff;
+	position: relative;
+	width: 100%;
+	height: 300px;
+	border-radius: 8px;
+	overflow: hidden;
+	margin-bottom: 2.5rem;
+	color: #fff;
 }
 
 .hero-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 
 .hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.6);
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	filter: brightness(0.6);
 }
 
 .hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, rgba(10, 35, 66, 0.6), rgba(10, 35, 66, 0.2));
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to top, rgba(10, 35, 66, 0.6), rgba(10, 35, 66, 0.2));
 }
 
 .hero-title {
-  position: absolute;
-  bottom: 2rem;
-  left: 2rem;
-  font-size: 3rem;
-  color: #fff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  margin: 0;
+	position: absolute;
+	bottom: 2rem;
+	left: 2rem;
+	font-size: 3rem;
+	color: #fff;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+	margin: 0;
 }
 
 /* =========================================
    8. PÁGINA INICIAL & CARDS DE CURSO
    ========================================= */
 .home-welcome {
-  text-align: center;
-  margin-bottom: 3rem;
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: var(--card-shadow);
+	text-align: center;
+	margin-bottom: 3rem;
+	background: white;
+	padding: 2rem;
+	border-radius: 8px;
+	box-shadow: var(--card-shadow);
 }
 
 .courses-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+	gap: 2rem;
 }
 
 .course-card {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: var(--card-shadow);
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-  display: flex;
-  flex-direction: column;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: var(--card-shadow);
+	overflow: hidden;
+	transition: transform 0.3s, box-shadow 0.3s;
+	display: flex;
+	flex-direction: column;
 }
 
 .course-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+	transform: translateY(-5px);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .course-card-content {
-  padding: 1.5rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+	padding: 1.5rem;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
 }
 
 .course-card-content h3 {
-  margin-top: 0;
-  font-size: 1.5rem;
+	margin-top: 0;
+	font-size: 1.5rem;
 }
 
 .course-card-details {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0;
-  color: #555;
-  flex-grow: 1;
+	list-style: none;
+	padding: 0;
+	margin: 1rem 0;
+	color: #555;
+	flex-grow: 1;
 }
 
 .course-card-details li {
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+	margin-bottom: 0.5rem;
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
 }
 
 .course-card-footer {
-  padding: 0 1.5rem 1.5rem;
+	padding: 0 1.5rem 1.5rem;
 }
 
 /* =========================================
    9. PÁGINA DE DETALHES DO CURSO
    ========================================= */
 .details-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 1.5rem;
+	margin-bottom: 2rem;
 }
 
 .detail-item {
-  background-color: var(--background-color);
-  padding: 1rem;
-  border-radius: 5px;
-  border-left: 5px solid var(--primary-color);
+	background-color: var(--background-color);
+	padding: 1rem;
+	border-radius: 5px;
+	border-left: 5px solid var(--primary-color);
 }
 
 .detail-item strong {
-  display: block;
-  margin-bottom: 0.25rem;
-  color: var(--primary-color);
+	display: block;
+	margin-bottom: 0.25rem;
+	color: var(--primary-color);
 }
 
 /* Layout de Colunas (Texto + Imagem) */
 .two-column-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  align-items: center;
-  margin-bottom: 2.5rem;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2.5rem;
+	align-items: center;
+	margin-bottom: 2.5rem;
 }
 
 .column-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: var(--card-shadow);
+	width: 100%;
+	height: auto;
+	border-radius: 8px;
+	box-shadow: var(--card-shadow);
 }
 
 /* Estilo do Syllabus (Conteúdo Programático) */
 .syllabus-list {
-  list-style: none;
-  padding: 0;
-  margin-top: 1rem;
+	list-style: none;
+	padding: 0;
+	margin-top: 1rem;
 }
 
 .syllabus-item {
-  padding: 0.15rem 0;
-  color: #444;
-  line-height: 1.3;
+	padding: 0.15rem 0;
+	color: #444;
+	line-height: 1.3;
 }
 
-/* Nível 0 (Títulos Principais): Negrito, cor de destaque e fundo sutil */
 .syllabus-item.level-0 {
-  font-weight: 700;
-  color: var(--primary-color);
-  margin-top: 0.75rem;
-  margin-bottom: 0.25rem;
-  font-size: 1rem;
-  background-color: #f0f2f5;
-  padding: 0.4rem 0.75rem;
-  border-radius: 4px;
+	font-weight: 700;
+	color: var(--primary-color);
+	margin-top: 0.75rem;
+	margin-bottom: 0.25rem;
+	font-size: 1rem;
+	background-color: #f0f2f5;
+	padding: 0.4rem 0.75rem;
+	border-radius: 4px;
 }
 
-/* Nível 1 (Subtópicos): Indentação aumentada para clareza visual */
 .syllabus-item.level-1 {
-  margin-left: 2rem; /* Aumentado de 1rem para 2rem */
-  font-weight: 600;
-  color: #222;
-  font-size: 0.95rem;
+	margin-left: 2rem;
+	font-weight: 600;
+	color: #222;
+	font-size: 0.95rem;
 }
 
-/* Nível 2 (Detalhes): Indentação dupla */
 .syllabus-item.level-2 {
-  margin-left: 4rem; /* Aumentado de 2.5rem para 4rem */
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: #555;
+	margin-left: 4rem;
+	font-size: 0.9rem;
+	font-weight: 400;
+	color: #555;
 }
 
-/* Navegação entre cursos (Anterior/Próximo) */
 .course-navigation {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  width: 100%;
+	display: flex;
+	align-items: center;
+	margin-bottom: 1.5rem;
+	width: 100%;
 }
 
 .course-nav-link {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: var(--primary-color);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	font-size: 1.1rem;
+	font-weight: bold;
+	color: var(--primary-color);
+	text-decoration: none;
+	padding: 0.5rem 1rem;
+	border-radius: 5px;
+	transition: background-color 0.3s, color 0.3s;
 }
 
 .course-nav-link:hover {
-  background-color: var(--background-color);
-  color: var(--secondary-color);
+	background-color: var(--background-color);
+	color: var(--secondary-color);
 }
 
 .course-nav-link.next {
-  flex-direction: row-reverse;
+	flex-direction: row-reverse;
 }
 
 /* =========================================
-   10. FORMULÁRIOS & INSCRIÇÃO
+   10. FORMULÁRIOS & ADMIN
    ========================================= */
-.form-container {
-  max-width: 800px;
-  margin: 0 auto;
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: var(--card-shadow);
+.form-container,
+.admin-login-container,
+.admin-dashboard {
+	max-width: 800px;
+	margin: 0 auto;
+	background: white;
+	padding: 2rem;
+	border-radius: 8px;
+	box-shadow: var(--card-shadow);
+}
+
+.admin-login-container,
+.admin-dashboard {
+	max-width: 600px;
+	margin: 2rem auto;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+	margin-bottom: 1.5rem;
 }
-
 .form-group label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-  color: var(--primary-color);
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: 0.5rem;
+	font-weight: bold;
+	color: var(--primary-color);
 }
-
 .form-group input[type="text"],
 .form-group input[type="email"],
+.form-group input[type="password"],
 .form-group textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  font-size: 1rem;
-  box-sizing: border-box;
+	width: 100%;
+	padding: 10px;
+	border: 1px solid var(--border-color);
+	border-radius: 4px;
+	font-size: 1rem;
+	box-sizing: border-box;
 }
-
 .form-group textarea {
-  resize: vertical;
-  min-height: 100px;
+	resize: vertical;
+	min-height: 100px;
 }
-
-.radio-group label, .checkbox-group label {
-  margin-right: 1rem;
-  font-weight: normal;
-}
-
-/* Informações de Contato */
-.contact-info {
-  margin-top: 2.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border-color);
-}
-
-.contact-info h3 {
-  margin-top: 0;
-}
-
-.contact-info p {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-/* =========================================
-   11. UTILITÁRIOS DE ÍCONES
-   ========================================= */
-.icon-heading {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.icon-list {
-  list-style: none;
-  padding-left: 0.5rem;
-}
-
-.icon-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.icon-list li svg {
-  flex-shrink: 0;
-  margin-top: 0.25rem;
-  color: var(--primary-color);
-}
-
-/* =========================================
-   12. ÁREA ADMINISTRATIVA
-   ========================================= */
-.admin-login-container, .admin-dashboard {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: var(--card-shadow);
-}
-
-.admin-dashboard h1, .admin-login-container h1 {
-  text-align: center;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.stat-card {
-  background-color: var(--background-color);
-  padding: 1rem;
-  border-radius: 5px;
-}
-
-.stat-card h3 {
-  margin: 0 0 0.5rem 0;
-}
-
-.stat-card p {
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--primary-color);
-  margin: 0;
+.radio-group label,
+.checkbox-group label {
+	margin-right: 1rem;
+	font-weight: normal;
 }
 
 .application-list table {
-  width: 100%;
-  border-collapse: collapse;
+	width: 100%;
+	border-collapse: collapse;
 }
-
-.application-list th, .application-list td {
-  padding: 0.75rem;
-  border: 1px solid var(--border-color);
-  text-align: left;
+.application-list th,
+.application-list td {
+	padding: 0.75rem;
+	border: 1px solid var(--border-color);
+	text-align: left;
 }
-
 .application-list th {
-  background-color: var(--primary-color);
-  color: white;
+	background-color: var(--primary-color);
+	color: white;
 }
 
-/* --- Admin Dashboard: Status Badges --- */
 .status-badge {
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  text-transform: uppercase;
+	padding: 4px 8px;
+	border-radius: 4px;
+	font-size: 0.85rem;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.status-badge.pendente {
+	background-color: #ffeeba;
+	color: #856404;
+}
+.status-badge.aprovado {
+	background-color: #d4edda;
+	color: #155724;
+}
+.status-badge.pago {
+	background-color: #cce5ff;
+	color: #004085;
+}
+.status-badge.rejeitado {
+	background-color: #f8d7da;
+	color: #721c24;
 }
 
-.status-badge.pendente { background-color: #ffeeba; color: #856404; }
-.status-badge.aprovado { background-color: #d4edda; color: #155724; }
-.status-badge.pago { background-color: #cce5ff; color: #004085; }
-.status-badge.rejeitado { background-color: #f8d7da; color: #721c24; }
+.icon-heading {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
 
-/* --- Admin Modal (Pop-up) --- */
+/* Modal Admin */
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 1rem; /* Margem para não colar na borda em telas pequenas */
-  box-sizing: border-box;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+	padding: 1rem;
+	box-sizing: border-box;
 }
-
 .modal-content {
-  background: white;
-  width: 100%;
-  max-width: 800px;
-  max-height: 90vh; /* Altura máxima de 90% da tela */
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  display: flex;
-  flex-direction: column; /* Organiza Topo, Meio e Fim verticalmente */
-  overflow: hidden; /* Impede que o container geral tenha scroll */
-  animation: fadeIn 0.2s ease-out;
+	background: white;
+	width: 100%;
+	max-width: 800px;
+	max-height: 90vh;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
 }
-
 .modal-header {
-  padding: 1.5rem;
-  background-color: var(--primary-color);
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-shrink: 0; /* Cabeçalho nunca encolhe */
+	padding: 1.5rem;
+	background-color: var(--primary-color);
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-shrink: 0;
 }
-
 .modal-header h2 {
-  margin: 0;
-  color: white;
-  font-size: 1.2rem;
+	margin: 0;
+	color: white;
+	font-size: 1.2rem;
 }
-
 .close-button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0;
-  line-height: 1;
+	background: none;
+	border: none;
+	color: white;
+	font-size: 1.5rem;
+	cursor: pointer;
+	padding: 0;
+	line-height: 1;
 }
-
 .modal-body {
-  padding: 2rem;
-  overflow-y: auto; /* SÓ o corpo tem scroll */
-  flex: 1; /* Ocupa todo o espaço disponível */
+	padding: 2rem;
+	overflow-y: auto;
+	flex: 1;
 }
-
 .modal-actions {
-  padding: 1rem 1.5rem;
-  border-top: 1px solid #ddd;
-  background-color: #f9f9f9;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 0.5rem;
-  flex-shrink: 0; /* Rodapé nunca encolhe */
-  flex-wrap: wrap; /* Permite que os botões vão para baixo se faltar espaço */
+	padding: 1rem 1.5rem;
+	border-top: 1px solid #ddd;
+	background-color: #f9f9f9;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 0.5rem;
+	flex-shrink: 0;
+	flex-wrap: wrap;
 }
-
-/* Ajuste nos botões do modal para ficarem bonitos se quebrarem linha */
 .modal-actions .button {
-  margin: 0;
-  font-size: 0.85rem;
-  padding: 0.6rem 1rem;
+	margin: 0;
+	font-size: 0.85rem;
+	padding: 0.6rem 1rem;
 }
-
 .info-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1.5rem;
+	margin-bottom: 2rem;
 }
-
-.info-box label {
-  display: block;
-  font-weight: bold;
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 0.25rem;
-}
-
-.info-box p {
-  margin: 0;
-  font-size: 1.1rem;
-  color: #333;
-}
-
 .answers-section {
-  background-color: #f4f4f9;
-  padding: 1.5rem;
-  border-radius: 8px;
+	background-color: #f4f4f9;
+	padding: 1.5rem;
+	border-radius: 8px;
 }
-
 .answer-item {
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 0.5rem;
+	margin-bottom: 1rem;
+	border-bottom: 1px solid #e0e0e0;
+	padding-bottom: 0.5rem;
 }
 
-.answer-item strong {
-  display: block;
-  color: var(--primary-color);
-  margin-bottom: 0.25rem;
+/* FAQ */
+.faq-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-top: 1rem;
+}
+.faq-item {
+	background: #fff;
+	border: 1px solid var(--border-color);
+	border-radius: 4px;
+	overflow: hidden;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+	transition: border-color 0.2s;
+}
+.faq-item:hover {
+	border-color: var(--primary-color);
+}
+.faq-question {
+	padding: 1.2rem 1.5rem;
+	background-color: #fff;
+	font-weight: 700;
+	font-size: 1.05rem;
+	color: var(--primary-color);
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: background-color 0.2s;
+	user-select: none;
+}
+.faq-question:hover {
+	background-color: #f4f9ff;
+}
+.faq-question svg {
+	color: var(--secondary-color);
+	font-size: 1.5rem;
+	min-width: 24px;
+}
+.faq-answer {
+	padding: 1.5rem;
+	background-color: #fafafa;
+	border-top: 1px solid #eee;
+	color: #444;
+	line-height: 1.7;
+	font-size: 0.95rem;
+	animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-5px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 /* =========================================
-   13. RESPONSIVIDADE (Media Queries)
+   13. RESPONSIVIDADE & MOBILE (Media Queries)
    ========================================= */
 @media (max-width: 768px) {
-  /* Ajustes de Header */
-  .header-logo a { font-size: 1.8rem; }
-  .header-nav ul { flex-direction: column; }
-  .header-nav li { width: 100%; justify-content: center; }
-  .header-nav li::after { display: none; }
-  .header-nav a { width: 100%; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
-  /* Ajustes de Layout */
+  /* --- ESCONDER ELEMENTOS REDUNDANTES --- */
+  .button-back {
+    display: none; /* Remove o botão "Voltar ao Início" no mobile */
+  }
+
+  /* --- LAYOUT FULL-WIDTH --- */
+  .main-content {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .page-container {
+    padding: 1.5rem 1.25rem;
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 0;
+  }
+
+  .home-welcome {
+    border-radius: 0;
+    box-shadow: none;
+    padding: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  /* --- HEADER RESPONSIVO (Hamburger) --- */
+  .header-top {
+    padding: 0.5rem 1rem;
+  }
+
+  .header-content-wrapper {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  /* AJUSTE DO LOGO NO MOBILE */
+  .logo-image {
+    height: 40px;
+  }
+
+  .menu-toggle {
+    display: block !important;
+  }
+
+  .header-nav {
+    display: none;
+    background-color: #081d36;
+  }
+
+  .header-nav.open {
+    display: block;
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  .header-nav ul {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .header-nav li {
+    width: 100%;
+    justify-content: flex-start;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .header-nav li::after {
+    display: none;
+  }
+
+  .header-nav a {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border-bottom: none;
+  }
+
+  /* --- BANNER/HERO --- */
+  .hero-container {
+    height: 160px;
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+    left: 1rem;
+    bottom: 1rem;
+  }
+
+  /* --- HOME PAGE ORDEM E ESPAÇAMENTO --- */
   .two-column-layout {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
+
   .column-image {
-    order: -1; /* Imagem acima do texto no mobile */
+    order: unset;
   }
 
-  /* Ajustes de Tipografia */
-  .hero-title {
-    font-size: 2.2rem;
+  h2 {
+    padding: 0 1rem;
   }
 
-  /* Elementos Ocultos */
-  .course-nav-link span {
-    display: none; /* Esconde texto "Próximo/Anterior" */
+  /* --- GRIDS DE CURSOS --- */
+  .courses-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1.5rem;
   }
-}
 
-/* --- FAQ (Estilo Acordeão EBC) --- */
-.faq-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem; /* Espaço entre as perguntas */
-  margin-top: 1rem;
-}
-
-.faq-item {
-  background: #fff;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  overflow: hidden; /* Garante que o conteúdo interno respeite as bordas arredondadas */
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Sombra leve */
-  transition: border-color 0.2s;
-}
-
-.faq-item:hover {
-  border-color: var(--primary-color); /* Borda fica azul ao passar o mouse */
-}
-
-.faq-question {
-  padding: 1.2rem 1.5rem;
-  background-color: #fff;
-  font-weight: 700;
-  font-size: 1.05rem;
-  color: var(--primary-color); /* Azul Institucional */
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background-color 0.2s;
-  user-select: none; /* Evita seleção de texto ao clicar rápido */
-}
-
-.faq-question:hover {
-  background-color: #f4f9ff; /* Fundo azul bem clarinho no hover */
-}
-
-/* Ícone (+ / -) */
-.faq-question svg {
-  color: var(--accent-color); /* Ícone Verde */
-  font-size: 1.5rem;
-  min-width: 24px; /* Garante que o ícone não encolha em telas pequenas */
-}
-
-.faq-answer {
-  padding: 1.5rem;
-  background-color: #fafafa; /* Fundo levemente cinza para a resposta */
-  border-top: 1px solid #eee;
-  color: #444;
-  line-height: 1.7;
-  font-size: 0.95rem;
-  animation: fadeIn 0.3s ease-in-out; /* Animação suave de entrada */
-}
-
-/* Pequena animação para o texto aparecer suavemente */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- Ajuste Mobile --- */
-@media (max-width: 768px) {
-  .modal-actions {
-    justify-content: center; /* Centraliza botões no mobile */
+  .course-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
-  .info-grid {
-    grid-template-columns: 1fr; /* Uma coluna só no mobile */
-  }
+
+  /* --- MODAL E ADMIN --- */
+  .modal-actions { justify-content: center; }
+  .info-grid { grid-template-columns: 1fr; }
+  .course-nav-link span { display: none; }
 }

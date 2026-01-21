@@ -1,3 +1,9 @@
+-- LIMPEZA TOTAL (Para garantir a recriação das tabelas com novas colunas)
+DROP TABLE IF EXISTS questionnaire_answers CASCADE;
+DROP TABLE IF EXISTS applications CASCADE;
+DROP TABLE IF EXISTS courses CASCADE;
+DROP TABLE IF EXISTS admins CASCADE;
+
 -- Tabela de Cursos
 CREATE TABLE IF NOT EXISTS courses (
     id SERIAL PRIMARY KEY,
@@ -9,7 +15,9 @@ CREATE TABLE IF NOT EXISTS courses (
     methodology TEXT,
     gdrive_link VARCHAR(255),
     syllabus JSONB,
-    questionnaire JSONB
+    questionnaire JSONB,
+    image_banner VARCHAR(255), -- Nova coluna para o banner
+    image_thumb VARCHAR(255)   -- Nova coluna para imagem lateral/card
 );
 
 -- Tabela de Inscrições de Alunos
@@ -21,7 +29,7 @@ CREATE TABLE IF NOT EXISTS applications (
     student_whatsapp VARCHAR(50),
     student_address TEXT,
     student_cv TEXT,
-    status VARCHAR(50) DEFAULT 'Pendente', -- Pendente, Aprovado, Rejeitado, Pago
+    status VARCHAR(50) DEFAULT 'Pendente',
     submission_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -40,37 +48,31 @@ CREATE TABLE IF NOT EXISTS admins (
     password_hash VARCHAR(255) NOT NULL
 );
 
--- LIMPEZA DE DADOS
-TRUNCATE TABLE courses RESTART IDENTITY CASCADE;
-TRUNCATE TABLE admins RESTART IDENTITY CASCADE;
-
 -- 1. INSERIR USUÁRIO ADMIN PADRÃO
--- Usuário: admin
--- Senha: 123456 (Hash atualizado)
+-- Senha: 123456
 INSERT INTO admins (username, password_hash)
 VALUES ('admin', '$2a$10$hoQQ1A0qkfzAXiLFbkeuoOcQ9SbElFxat3ujv8AhhwnCgwqhH.MMy');
--- Nota: Se este hash falhar, use o script Python abaixo para gerar um novo.
 
--- 2. INSERIR CURSOS (Conteúdo atualizado)
-INSERT INTO courses (title, workload, price, payment_info, schedule, methodology, syllabus, questionnaire) VALUES
+-- 2. INSERIR CURSOS (Com as novas imagens)
+INSERT INTO courses (title, workload, price, payment_info, schedule, methodology, syllabus, questionnaire, image_banner, image_thumb) VALUES
 ('Matemática Financeira', 40, 1000.00, 'À vista ou em 2 parcelas mensais de R$ 500,00 (cheques pré-datados).', 'Terças e Quintas-feiras das 9 às 11hs',
-'A metodologia do curso consiste inicialmente na apresentação da programação e calendário do curso, seguido da indicação das ferramentas, tais como, a HP 12C e o EXCEL, que serão utilizadas pelos alunos durante a aprendizagem e na solução dos exercícios de fixação. Ambas estão incluídos em Anexo ao final do texto básico do curso: "Conquistando o seu futuro Financeiro: Planejamento em tempos de incertezas", de minha autoria e do Prof. Paulo Gurgel. Para a fixação do conteúdo serão liberadas as listas dos exercícios para a resolução dos alunos. Posteriormente, as dúvidas nas soluções serão dirimidas com a ajuda e apoio dos auxiliares do curso. Na Bibliografia auxiliar teremos também as indicações de outros exercícios existentes em textos complementares.',
+'A metodologia do curso consiste inicialmente na apresentação da programação e calendário do curso, seguido da indicação das ferramentas, tais como, a HP 12C e o EXCEL, que serão utilizadas pelos alunos durante a aprendizagem e na solução dos exercícios de fixação. Ambas estão incluídas em Anexo ao final do texto básico do curso: "Conquistando o seu futuro Financeiro: Planejamento em tempos de incertezas", de minha autoria e do Prof. Paulo Gurgel. Para a fixação do conteúdo serão liberadas as listas dos exercícios para a resolução dos alunos. Posteriormente, as dúvidas nas soluções serão dirimidas com a ajuda e apoio dos auxiliares do curso. Na Bibliografia auxiliar teremos também as indicações de outros exercícios existentes em textos complementares.',
 '{
   "introducao": "Na economia financeira há diversas formas através das quais as pessoas e as empresas podem analisar situações envolvendo a variação do dinheiro no tempo e também fazer as aplicações das suas reservas no mercado financeiro. Uma delas é utilizando os conceitos básicos da Matemática Financeira, juntamente com outros conteúdos de estatística associados. Podemos afirmar, portanto, que a Matemática Financeira é um conjunto de técnicas e formulações teóricas cujo objetivo principal é mostrar como se pode acompanhar a variação do dinheiro no tempo. É o que pretendemos desenvolver no nosso curso.",
   "items": [
     { "label": "I - Capitalização Simples", "level": 0 },
-    { "label": "1.1 Cálculo dos juros - Montante", "level": 1 },
-    { "label": "1.2 Fórmulas derivadas", "level": 1 },
-    { "label": "1.3 Homogeneidade entre taxa e tempo", "level": 1 },
+    { "label": "I.1 Cálculo dos juros - Montante", "level": 1 },
+    { "label": "I.2 Fórmulas derivadas", "level": 1 },
+    { "label": "I.3 Homogeneidade entre taxa e tempo", "level": 1 },
     { "label": "II Capitalização composta", "level": 0 },
-    { "label": "2.1 Montante – Fórmulas derivadas", "level": 1 },
-    { "label": "2.2 Homogeneidade entre taxa e tempo", "level": 1 },
-    { "label": "2.2 Taxa nominal – Taxas proporcionais - Taxas equivalentes", "level": 1 },
+    { "label": "II.1 Montante – Fórmulas derivadas", "level": 1 },
+    { "label": "II.2 Homogeneidade entre taxa e tempo", "level": 1 },
+    { "label": "II.2 Taxa nominal – Taxas proporcionais - Taxas equivalentes", "level": 1 },
     { "label": "III Desconto", "level": 0 },
     { "label": "III.1 Desconto simples", "level": 1 },
     { "label": "III.1.1 Desconto simples bancário ou comercial (por fora)", "level": 2 },
     { "label": "III.1.2 Valor atual ou de resgate", "level": 2 },
-    { "label": "III.1.3 Valor nominal bancário", "level": 2 },
+    { "label": "III.1.3 Valor nominal de face", "level": 2 },
     { "label": "III.2 Desconto Composto", "level": 1 },
     { "label": "III.2.1 Desconto comercial, bancário composto ou por fora", "level": 2 },
     { "label": "III.2.2 Desconto racional composto ou por dentro", "level": 2 },
@@ -127,12 +129,14 @@ INSERT INTO courses (title, workload, price, payment_info, schedule, methodology
     {"id": "softwares", "label": "Indique os softwares que sabe usar:", "type": "checkbox", "options": ["Excel", "Word", "Power Point"]},
     {"id": "softwares_est", "label": "Que software estatístico sabe usar?", "type": "text", "placeholder": "SPSS, Stata, EViews, Jamovi, Outro"}
   ]
-}'),
+}',
+'matematica-banner.png',
+'matematica-thumb.png'),
 
 ('Estatística Básica', 50, 1500.00, 'À vista ou em 3 parcelas mensais de R$ 500,00 (cheques pré-datados).', 'Terças e Quintas-feiras das 9 às 11hs',
 'A metodologia do curso consistirá inicialmente na apresentação do programa e na orientação da forma de estudo e resolução dos exercícios com o auxiliar do curso. Após identificar os alunos que não têm a o conhecimento das ferramentas que serão utilizadas na solução dos exercícios de fixação do conteúdo: a HP 12C e o EXCEL, apresentaremos o material de apoio e forma de estudo. Para a fixação do conteúdo também estará na Bibliografia auxiliar do curso um conjunto de textos para para consulta. Ao longo do curso serão liberadas as listas dos exercícios para a resolução dos alunos. Posteriormente, as dúvidas nas soluções serão dirimidas com a interevenção do auxiliar do curso.',
 '{
-  "introducao": "A Estatística é uma parte da Matemática Aplicada que fornece métodos para coleta, organização, descrição, análise e interpretação de dados e para a utilização dos mesmos na tomada de decisões. A grosso modo podemos dividir a Estatística em três áreas: Estatística Descritiva; Probabilidade; e Inferência Estatística. Essas três áreas serão estudadas no decorrer do curso.",
+  "introducao": "A Estatística é uma parte da Matemática Aplicada que fornece métodos para coleta, organização, descrição, análise e interpretação de dados e para a utilização nas tomadas de decisões. A grosso modo podemos dividir a Estatística em três áreas: Estatística Descritiva; Probabilidade; e Inferência Estatística. Essas três áreas serão estudadas no decorrer do curso.",
   "items": [
     { "label": "I Medidas", "level": 0 },
     { "label": "I.1 Medidas de Tendência Central", "level": 1 },
@@ -167,4 +171,6 @@ INSERT INTO courses (title, workload, price, payment_info, schedule, methodology
     {"id": "softwares", "label": "Indique os softwares que sabe usar:", "type": "checkbox", "options": ["Excel", "Word", "Power Point"]},
     {"id": "softwares_est", "label": "Que software estatístico sabe usar?", "type": "text", "placeholder": "SPSS, Stata, EViews, Jamovi, Outro"}
   ]
-}');
+}',
+'estatistica-banner.png',
+'estatistica-thumb.png');

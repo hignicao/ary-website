@@ -26,7 +26,7 @@ const FAQ = () => {
     },
     {
       q: "Como funcionam as aulas de exercícios?",
-      a: "As dúvidas sobre conteúdos e exercícios não resolvidos serão esclarecidas pelo auxiliar do professor nas aulas de exercício ao vivo, que ocorrem às quintas-feiras. Também é possível tirar dúvidas através do e-mail do auxiliar."
+      a: "As dúvidas sobre conteúdos e exercícios não resolvidos serão esclarecidas pelo auxiliar do professor nas aulas ao vivo, que ocorrem às quintas-feiras. Também é possível tirar dúvidas através do e-mail do auxiliar."
     },
     {
       q: "Preciso ter a calculadora HP 12C?",
@@ -38,11 +38,11 @@ const FAQ = () => {
     },
     {
       q: "Como é feito o pagamento?",
-      a: "A inscrição no site não cobra pagamento imediato. Após preencher o formulário, seus dados serão analisados. Sendo aprovado, você receberá as instruções para realizar o pagamento (à vista ou parcelado via cheque pré-datado/PIX) diretamente com a coordenação."
+      a: "A inscrição no site não cobra pagamento imediato. Após preencher o formulário, seus dados serão analisados. Sendo aprovado, você receberá um link para pagamento (à vista ou parcelado) diretamente com a coordenação."
     },
     {
       q: "Posso fazer os dois cursos ao mesmo tempo?",
-      a: "Com certeza. Você pode se inscrever em um único curso ou no combo (Matemática Financeira + Estatística Básica). O conteúdo é complementar e enriquecedor para sua formação."
+      a: "Não. Os cursos não são simultâneos. Você poderá se inscrever em um único curso (Matemática Financeira ou Estatística Básica)."
     }
   ];
 

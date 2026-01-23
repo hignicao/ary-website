@@ -55,7 +55,7 @@ VALUES ('admin', '$2a$10$hoQQ1A0qkfzAXiLFbkeuoOcQ9SbElFxat3ujv8AhhwnCgwqhH.MMy')
 
 -- 2. INSERIR CURSOS (Com as novas imagens)
 INSERT INTO courses (title, workload, price, payment_info, schedule, methodology, syllabus, questionnaire, image_banner, image_thumb) VALUES
-('Matemática Financeira', 40, 1000.00, 'À vista ou em 2 parcelas mensais de R$ 500,00 (cheques pré-datados).', 'Terças e Quintas-feiras das 9 às 11hs',
+('Matemática Financeira', 40, 1000.00, 'À vista ou em 2 parcelas mensais de R$ 500,00 (parcelado no cartão).', 'Terças e Quintas-feiras e Sexta-feiras das 9 às 11hs',
 'A metodologia do curso consiste inicialmente na apresentação da programação e calendário do curso, seguido da indicação das ferramentas, tais como, a HP 12C e o EXCEL, que serão utilizadas pelos alunos durante a aprendizagem e na solução dos exercícios de fixação. Ambas estão incluídas em Anexo ao final do texto básico do curso: "Conquistando o seu futuro Financeiro: Planejamento em tempos de incertezas", de minha autoria e do Prof. Paulo Gurgel. Para a fixação do conteúdo serão liberadas as listas dos exercícios para a resolução dos alunos. Posteriormente, as dúvidas nas soluções serão dirimidas com a ajuda e apoio dos auxiliares do curso. Na Bibliografia auxiliar teremos também as indicações de outros exercícios existentes em textos complementares.',
 '{
   "introducao": "Na economia financeira há diversas formas através das quais as pessoas e as empresas podem analisar situações envolvendo a variação do dinheiro no tempo e também fazer as aplicações das suas reservas no mercado financeiro. Uma delas é utilizando os conceitos básicos da Matemática Financeira, juntamente com outros conteúdos de estatística associados. Podemos afirmar, portanto, que a Matemática Financeira é um conjunto de técnicas e formulações teóricas cujo objetivo principal é mostrar como se pode acompanhar a variação do dinheiro no tempo. É o que pretendemos desenvolver no nosso curso.",
@@ -133,7 +133,7 @@ INSERT INTO courses (title, workload, price, payment_info, schedule, methodology
 'matematica-banner.png',
 'matematica-thumb.png'),
 
-('Estatística Básica', 50, 1500.00, 'À vista ou em 3 parcelas mensais de R$ 500,00 (cheques pré-datados).', 'Terças e Quintas-feiras das 9 às 11hs',
+('Estatística Básica', 50, 1500.00, 'À vista ou em 3 parcelas mensais de R$ 500,00 (parcelado no cartão).', 'Terças e Quintas-feiras e Sexta-feiras das 9 às 11hs',
 'A metodologia do curso consistirá inicialmente na apresentação do programa e na orientação da forma de estudo e resolução dos exercícios com o auxiliar do curso. Após identificar os alunos que não têm a o conhecimento das ferramentas que serão utilizadas na solução dos exercícios de fixação do conteúdo: a HP 12C e o EXCEL, apresentaremos o material de apoio e forma de estudo. Para a fixação do conteúdo também estará na Bibliografia auxiliar do curso um conjunto de textos para para consulta. Ao longo do curso serão liberadas as listas dos exercícios para a resolução dos alunos. Posteriormente, as dúvidas nas soluções serão dirimidas com a interevenção do auxiliar do curso.',
 '{
   "introducao": "A Estatística é uma parte da Matemática Aplicada que fornece métodos para coleta, organização, descrição, análise e interpretação de dados e para a utilização nas tomadas de decisões. A grosso modo podemos dividir a Estatística em três áreas: Estatística Descritiva; Probabilidade; e Inferência Estatística. Essas três áreas serão estudadas no decorrer do curso.",

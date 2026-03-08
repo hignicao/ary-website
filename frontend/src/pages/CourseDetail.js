@@ -7,7 +7,9 @@ import {
   IoCreateOutline,
   IoReaderOutline,
   IoFlaskOutline,
-  IoLibraryOutline
+  IoLibraryOutline,
+  IoPeopleOutline,
+  IoCheckmarkCircleOutline
 } from "react-icons/io5";
 import Hero from '../components/Hero';
 
@@ -68,12 +70,10 @@ const CourseDetail = () => {
   };
 
   if (loading) return <p>Carregando detalhes do curso...</p>;
-  if (error) return <p style={{ color: 'red' }}>{error}</p>;
+  if (error) return <p>{error}</p>;
   if (!course) return <p>Nenhum curso para exibir.</p>;
 
   const navStyle = getNavStyle();
-
-  // Definição dos caminhos das imagens vindas do banco
   const bannerSrc = course.image_banner ? `/images/${course.image_banner}` : null;
   const thumbSrc = course.image_thumb ? `/images/${course.image_thumb}` : null;
 
@@ -84,11 +84,10 @@ const CourseDetail = () => {
       </Link>
 
       <Hero title={course.title}>
-        {/* Banner usando a imagem do banco de dados */}
         {bannerSrc ? (
-            <img src={bannerSrc} alt={`Banner ${course.title}`} />
+            <img src={bannerSrc} alt={course.title} />
         ) : (
-            <img src="https://via.placeholder.com/1080x300?text=Sem+Imagem" alt="Imagem indisponível" />
+            <img src="https://via.placeholder.com/1080x300?text=Sem+Imagem" alt="Indisponível" />
         )}
       </Hero>
 
@@ -132,7 +131,7 @@ const CourseDetail = () => {
         </h3>
         <p>{course.syllabus.introducao}</p>
 
-        <div className="two-column-layout" style={{marginTop: '2.5rem'}}>
+        <div className="two-column-layout">
           <div className="column-text">
             <h3 className="icon-heading">
               <IoFlaskOutline /> Metodologia
@@ -140,21 +139,25 @@ const CourseDetail = () => {
             <p>{course.methodology}</p>
           </div>
           <div className="column-image">
-            {/* Imagem lateral usando o banco de dados e com trava de tamanho */}
-            {thumbSrc && (
-                <img
-                    src={thumbSrc}
-                    alt="Ilustração Metodologia"
-                    style={{
-                        maxWidth: '100%',  // Garante que não ultrapasse a coluna
-                        height: 'auto',    // Mantém a proporção
-                        borderRadius: '8px',
-                        boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
-                    }}
-                />
-            )}
+            {thumbSrc && <img src={thumbSrc} alt="Metodologia" />}
           </div>
         </div>
+
+        {course.syllabus.target_audience && (
+          <div>
+            <h3 className="icon-heading">
+              <IoPeopleOutline /> Para quem é essa qualificação?
+            </h3>
+            <ul className="icon-list">
+              {course.syllabus.target_audience.map((item, index) => (
+                <li key={index}>
+                  <IoCheckmarkCircleOutline />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <h3 className="icon-heading">
           <IoLibraryOutline /> Conteúdo Programático

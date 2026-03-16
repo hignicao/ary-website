@@ -33,9 +33,9 @@ const startServer = async () => {
     // ATENÇÃO: Troque a URL abaixo pela URL real do seu Frontend no Render
     const allowedOrigins = [
       'http://localhost:3000', // Permite o seu PC local para testes
-      'https://seu-frontend.onrender.com', // Coloque a URL do Render do Frontend
-      'https://www.profarybarradas.com.br', // Se for usar domínio próprio, adicione aqui
-      'https://profarybarradas.com.br'
+      'https://front-ary-website.onrender.com/', // Coloque a URL do Render do Frontend
+      'https://www.matfinanceiraeestatistica.com.br/', // Se for usar domínio próprio, adicione aqui
+      'https://matfinanceiraeestatistica.com.br/'
     ];
 
     app.use(cors({

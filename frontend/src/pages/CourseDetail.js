@@ -9,7 +9,8 @@ import {
   IoFlaskOutline,
   IoLibraryOutline,
   IoPeopleOutline,
-  IoCheckmarkCircleOutline
+  IoCheckmarkCircleOutline,
+  IoCalendarOutline
 } from "react-icons/io5";
 import Hero from '../components/Hero';
 
@@ -77,6 +78,13 @@ const CourseDetail = () => {
   const bannerSrc = course.image_banner ? `/images/${course.image_banner}` : null;
   const thumbSrc = course.image_thumb ? `/images/${course.image_thumb}` : null;
 
+  let startDate = null;
+  if (course.title.includes('Matemática')) {
+    startDate = '17/04/26';
+  } else if (course.title.includes('Estatística')) {
+    startDate = '14/07/26';
+  }
+
   return (
     <>
       <Link to="/" className="button-back">
@@ -125,6 +133,25 @@ const CourseDetail = () => {
             <span>{course.payment_info}</span>
           </div>
         </div>
+
+        {startDate && (
+          <div style={{
+            backgroundColor: '#fffbe6',
+            borderLeft: '5px solid var(--secondary-color)',
+            padding: '1rem 1.5rem',
+            marginBottom: '2rem',
+            borderRadius: '0 8px 8px 0',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+          }}>
+            <IoCalendarOutline style={{ color: 'var(--secondary-color)', fontSize: '1.8rem', flexShrink: 0 }} />
+            <span style={{ fontSize: '1.1rem', color: '#333' }}>
+              <strong>Previsão de Início do Curso:</strong> {startDate}
+            </span>
+          </div>
+        )}
 
         <h3 className="icon-heading">
           <IoReaderOutline /> Introdução

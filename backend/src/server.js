@@ -32,8 +32,9 @@ const startServer = async () => {
     // --- CAMADA DE SEGURANÇA 2: CORS RESTRITO ---
     const allowedOrigins = [
       'http://localhost:3000',
-      'https://matfinanceiraeestatistica.com.br', // <-- SEU DOMÍNIO REAL AQUI
-      'https://www.matfinanceiraeestatistica.com.br' // <-- COM WWW TAMBÉM
+      'https://matfinanceiraeestatistica.com.br',
+      'https://www.matfinanceiraeestatistica.com.br',
+      'https://front-ary-website.onrender.com' // <-- ADICIONADO AQUI
     ];
 
     app.use(cors({

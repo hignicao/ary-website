@@ -80,9 +80,9 @@ const CourseDetail = () => {
 
   let startDate = null;
   if (course.title.includes('Matemática')) {
-    startDate = '17/04/26';
+    startDate = '21/07/26';
   } else if (course.title.includes('Estatística')) {
-    startDate = '14/07/26';
+    startDate = '15/09/26';
   }
 
   return (
